@@ -1,3 +1,4 @@
+import sys
 sys.path.append(r'/home/pi/Desktop/Autonomous-Following-Drone/')
 from messaging import Messages
 remote = Messages()
