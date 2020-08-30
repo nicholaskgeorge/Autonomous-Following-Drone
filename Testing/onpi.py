@@ -5,3 +5,4 @@ remote.begin()
 remote.startsub("test/message")
 while True:
     print(remote.received)
+    time.sleep(0.8)
