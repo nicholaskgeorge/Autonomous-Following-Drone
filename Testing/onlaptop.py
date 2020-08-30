@@ -1,3 +1,5 @@
+import sys
+sys.path.append(r'C:\Users\Nico\Autonomous-Following-Drone')
 from messaging import Messages
 
 remote = Messages()
