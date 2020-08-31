@@ -1,40 +1,24 @@
-# MQTT Client demo
-# Continuously monitor two different MQTT topics for data,
-# check if the received data matches two predefined 'commands'
-
 import paho.mqtt.client as mqtt
+import time
+def on_log(client,userdata,level,buf):
+    print("log: "+buf)
+def on_connect(client,userdata,flags,rc):
+    if rc == 0:
+        print("connected OK")
+    else:
+        print("bad connection Returned code=",rc)
+def on_message(client,userdata,msg):
+    message=str(msg.payload.decode())
+    print(message)
+broker = "10.49.12.253"
+client = mqtt.Client("python1")
 
-# The callback for when the client receives a CONNACK response from the server.
-def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
-
-    # Subscribing in on_connect() - if we lose the connection and
-    # reconnect then subscriptions will be renewed.
-    client.subscribe("CoreElectronics/test")
-    client.subscribe("CoreElectronics/topic")
-
-# The callback for when a PUBLISH message is received from the server.
-def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
-
-    if msg.payload == "Hello":
-        print("Received message #1, do something")
-        # Do something
-
-
-    if msg.payload == "World!":
-        print("Received message #2, do something else")
-        # Do something else
-
-# Create an MQTT client and attach our routines to it.
-client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
+#client.on_log = on_log
+print("Connecting to broker ",broker)
 
-client.connect("test.mosquitto.org", 1883, 60)
-
-# Process network traffic and dispatch callbacks. This will also handle
-# reconnecting. Check the documentation at
-# https://github.com/eclipse/paho.mqtt.python
-# for information on how to use other loop*() functions
+client.connect(broker)
 client.loop_forever()
+client.subscribe('test/message')
+time.sleep(4)
