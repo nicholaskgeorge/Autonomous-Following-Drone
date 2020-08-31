@@ -13,7 +13,7 @@ def on_message(client,userdata,msg):
     message=str(msg.payload.decode())
     print(message)
 broker = "10.49.12.253"
-client = mqtt.Client("python1")
+client = mqtt.Client("Give")
 
 client.on_connect = on_connect
 client.on_message = on_message
@@ -22,7 +22,7 @@ print("Connecting to broker ",broker)
 
 client.connect(broker)
 client.loop_start()
-client.subscribe('test/message')
+#client.subscribe('test/message')
 client.publish("test/message",'IT WORKED!!!!')
 time.sleep(4)
 client.loop_stop()

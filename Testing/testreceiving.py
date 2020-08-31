@@ -10,8 +10,8 @@ def on_connect(client,userdata,flags,rc):
 def on_message(client,userdata,msg):
     message=str(msg.payload.decode())
     print(message)
-broker = "10.49.12.253"
-client = mqtt.Client("python1")
+broker = "localhost"
+client = mqtt.Client("Get")
 
 client.on_connect = on_connect
 client.on_message = on_message
@@ -21,4 +21,5 @@ print("Connecting to broker ",broker)
 client.connect(broker)
 client.loop_forever()
 client.subscribe('test/message')
+client.publish("test/message",'I Can send too')
 time.sleep(4)
