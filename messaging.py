@@ -1,9 +1,9 @@
 import paho.mqtt.client as mqtt
 import time
 class Messages():
-    def __init__(self,broker="10.49.12.253"):
+    def __init__(self,clientname,broker="10.49.12.253"):
         self.broker = broker
-        self.client = mqtt.Client("Laptop")
+        self.client = mqtt.Client(clientname)
         self.client.on_connect = self.on_connect
         self.client.on_disconnect = self.on_disconnect
         self.client.on_message = self.on_message
