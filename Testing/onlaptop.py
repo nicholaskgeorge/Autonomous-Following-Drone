@@ -4,4 +4,5 @@ from messaging import Messages
 
 remote = Messages()
 remote.begin()
-remote.send("test/message",'This is the first real sucess')
+remote.send("test/message",'This is the first sucess')
+remote.end()
