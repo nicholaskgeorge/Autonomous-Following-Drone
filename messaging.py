@@ -14,8 +14,10 @@ class Messages():
         else:
             print("bad connection Returned code=",rc)
     def on_message(client,userdata,msg):
+        print('hey')
         message=str(msg.payload.decode("utf-8","ignore"))
         print(message)
+
         self.received = message
     def on_disconnect(self,client,userdata,flags,rc):
         print('The connection has been closed')
