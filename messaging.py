@@ -15,11 +15,8 @@ class Messages():
             print("bad connection Returned code=",rc)
     def on_message(client,userdata,msg):
         print('hey')
-        message=str(msg.payload)
-        print(message)
-
-        self.received = message
-    def on_disconnect(self,client,userdata,flags,rc):
+        self.received = str(msg.payload)
+    def on_disconnect(self,client,userdata,flags,rc=0):
         print('The connection has been closed')
     def begin(self):
         print('Setting up connection')
