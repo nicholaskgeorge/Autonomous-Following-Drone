@@ -10,7 +10,7 @@ def on_connect(client,userdata,flags,rc):
     else:
         print("bad connection Returned code=",rc)
 def on_message(client,userdata,msg):
-    message=str(msg.payload.decode("utf-8","ignore"))
+    message=str(msg.payload.decode())
     print(message)
 broker = "10.49.12.253"
 client = mqtt.Client("python1")

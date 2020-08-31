@@ -6,7 +6,7 @@ from messaging import Messages
 remote = Messages('Drone')
 remote.begin()
 remote.startsub("test/message")
-remote.client.loop
+remote.client.loop_forever()
 while True:
     print(remote.received)
     time.sleep(0.8)
