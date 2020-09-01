@@ -7,6 +7,7 @@ def on_connect(client,userdata,flags,rc):
         print("connected OK")
     else:
         print("bad connection Returned code=",rc)
+    client.subscribe('test/message')
 def on_message(client,userdata,msg):
     message=str(msg.payload.decode())
     print(message)
@@ -20,6 +21,5 @@ print("Connecting to broker ",broker)
 
 client.connect(broker)
 client.loop_forever()
-client.subscribe('test/message')
 client.publish("test/message",'I Can send too')
 time.sleep(4)
