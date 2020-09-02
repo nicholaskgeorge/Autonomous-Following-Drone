@@ -25,18 +25,22 @@ class Messages(threading.Thread):
     def begin(self):
         print('Setting up connection')
         self.client.connect("10.49.12.253")
-        self.client.loop_forever()
+        self.client.loop_start()
     def end(self):
         time.sleep(1)
         print('Ending Connection')
         self.client.loop_stop()
         self.client.disconnect()
-    def changesub(self,topic):
+    def changesub(self,topic=None):
+        if topic is None:
+            topic = self.topic
         self.client.subscribe(topic)
-    def send(self,topic, msg):
+    def send(self,msg,topic=None):
+        if topic is None:
+            topic = self.topic
         self.client.publish(topic,msg)
     def run(self):
-        print('Setting up connection')
+        print('Setting up connection and starting thread')
         self.client.connect("10.49.12.253")
         self.client.loop_forever()
         time.sleep(1)
