@@ -1,3 +1,5 @@
+# MQTT Publish Demo
+#Publish two messages, to two different topics
 import paho.mqtt.client as mqtt
 import time
 def on_log(client,userdata,level,buf):
@@ -7,12 +9,11 @@ def on_connect(client,userdata,flags,rc):
         print("connected OK")
     else:
         print("bad connection Returned code=",rc)
-    client.subscribe('test/message')
 def on_message(client,userdata,msg):
     message=str(msg.payload.decode())
     print(message)
-broker = "localhost"
-client = mqtt.Client("Get")
+broker = "10.49.12.253"
+client = mqtt.Client("Give")
 
 client.on_connect = on_connect
 client.on_message = on_message
@@ -20,7 +21,9 @@ client.on_message = on_message
 print("Connecting to broker ",broker)
 
 client.connect(broker)
-client.loop_forever()
-client.subscribe('test/message')
-client.publish("test/message",'I Can send too')
+client.loop_start()
+#client.subscribe('test/message')
+client.publish("test/message",'IT WORKED!!!!')
 time.sleep(4)
+client.loop_stop()
+# client.disconnect()

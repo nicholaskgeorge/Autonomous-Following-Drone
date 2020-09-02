@@ -1,8 +1,11 @@
 import paho.mqtt.client as mqtt
 import time
-class Messages():
+import threading
+class Messages(threading.Thread):
     def __init__(self,clientname,broker="10.49.12.253",topic = "drone/communicate"):
+        super().__init__()
         self.broker = broker
+        self.listen = True
         self.topic = topic
         self.client = mqtt.Client(clientname)
         self.client.on_connect = self.on_connect
@@ -23,7 +26,6 @@ class Messages():
         print('Setting up connection')
         self.client.connect("10.49.12.253")
         self.client.loop_forever()
-        time.sleep(1)
     def end(self):
         time.sleep(1)
         print('Ending Connection')
@@ -33,9 +35,15 @@ class Messages():
         self.client.subscribe(topic)
     def send(self,topic, msg):
         self.client.publish(topic,msg)
+    def run(self):
+        print('Setting up connection')
+        self.client.connect("10.49.12.253")
+        self.client.loop_forever()
+        time.sleep(1)
 
 if __name__ == "__main__":
-    message = Messages()
+    message = Messages('Laptop',topic="test/message")
     message.begin()
     message.send("test/message",'Check')
+    time.sleep(2)
     message.end()
