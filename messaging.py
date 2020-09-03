@@ -7,10 +7,12 @@ class Messages(threading.Thread):
         self.broker = broker
         self.listen = True
         self.topic = topic
-        self.client = mqtt.Client(clientname)
+        self.clientname = clientname
+        self.client = mqtt.Client(self.clientname)
         self.client.on_connect = self.on_connect
         self.client.on_disconnect = self.on_disconnect
         self.client.on_message = self.on_message
+        self.client.on_subscibe = self.on_subscribe
         self.received = ''
     def on_connect(self,client,userdata,flags,rc):
         if rc == 0:
@@ -18,14 +20,17 @@ class Messages(threading.Thread):
         else:
             print("bad connection Returned code=",rc)
         self.client.subscribe(topic)
+    def on_subscribe():
+        print("Just Subscribed")
     def on_message(client,userdata,msg):
+        print('got a message')
         self.received = str(msg.payload.decode())
     def on_disconnect(self,client,userdata,flags,rc=0):
         print('The connection has been closed')
     def begin(self):
         print('Setting up connection')
-        self.client.connect("10.49.12.253")
-        self.client.loop_start()
+        self.client.connect(self.broker)
+        self.client.loop_forever()
     def end(self):
         time.sleep(1)
         print('Ending Connection')
