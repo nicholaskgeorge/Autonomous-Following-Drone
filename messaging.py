@@ -2,10 +2,9 @@ import paho.mqtt.client as mqtt
 import time
 import threading
 class Messages(threading.Thread):
-    def __init__(self,clientname,broker="10.49.12.253",topic = "drone/communicate"):
+    def __init__(self,clientname,broker="10.49.12.253",topic = "test/message"):
         super().__init__()
         self.broker = broker
-        self.listen = True
         self.topic = topic
         self.clientname = clientname
         self.client = mqtt.Client(self.clientname)
@@ -20,9 +19,9 @@ class Messages(threading.Thread):
         else:
             print("bad connection Returned code=",rc)
         self.client.subscribe(topic)
-    def on_subscribe():
-        print("Just Subscribed")
-    def on_message(client,userdata,msg):
+    def on_subscribe(self,client, userdata, mid, granted_qos):
+        print("Subscription complete")
+    def on_message(self,client,userdata,msg):
         print('got a message')
         self.received = str(msg.payload.decode())
     def on_disconnect(self,client,userdata,flags,rc=0):
