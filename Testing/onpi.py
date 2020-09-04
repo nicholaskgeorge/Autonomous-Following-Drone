@@ -5,4 +5,3 @@ from messaging import Messages
 
 remote = Messages(clientname = 'Get',broker = "10.49.12.253", topic = "test/message")
 remote.begin()
-remote.end()

@@ -18,12 +18,12 @@ class Messages(threading.Thread):
             print("Drone Connection Established")
         else:
             print("bad connection Returned code=",rc)
-        self.client.subscribe(topic)
+        self.client.subscribe(self.topic)
     def on_subscribe(self,client, userdata, mid, granted_qos):
         print("Subscription complete")
     def on_message(self,client,userdata,msg):
-        print('got a message')
         self.received = str(msg.payload.decode())
+        print(self.received)
     def on_disconnect(self,client,userdata,flags,rc=0):
         print('The connection has been closed')
     def begin(self):
