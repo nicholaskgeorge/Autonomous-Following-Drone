@@ -26,28 +26,25 @@ class Messages(threading.Thread):
         print(self.received)
     def on_disconnect(self,client,userdata,flags,rc=0):
         print('The connection has been closed')
-    def begin(self):
-        print('Setting up connection')
-        self.client.connect(self.broker)
-        self.client.loop_forever()
     def end(self):
         time.sleep(1)
         print('Ending Connection')
         self.client.loop_stop()
         self.client.disconnect()
-    def changesub(self,topic=None):
-        if topic is None:
-            topic = self.topic
+    def addsub(self,topic):
         self.client.subscribe(topic)
     def send(self,msg,topic=None):
         if topic is None:
             topic = self.topic
         self.client.publish(topic,msg)
+    def begin():
+        print('Setting up connection and starting thread')
+        self.client.connect("10.49.12.253")
+        self.client.loop_forever()
     def run(self):
         print('Setting up connection and starting thread')
         self.client.connect("10.49.12.253")
         self.client.loop_forever()
-        time.sleep(1)
 
 if __name__ == "__main__":
     message = Messages('Laptop',topic="test/message")
