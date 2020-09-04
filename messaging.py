@@ -38,12 +38,12 @@ class Messages(threading.Thread):
             topic = self.topic
         self.client.publish(topic,msg)
     def begin():
-        print('Setting up connection and starting thread')
-        self.client.connect("10.49.12.253")
+        print('Setting up connection')
+        self.client.connect(self.broker)
         self.client.loop_forever()
     def run(self):
         print('Setting up connection and starting thread')
-        self.client.connect("10.49.12.253")
+        self.client.connect(self.broker)
         self.client.loop_forever()
 
 if __name__ == "__main__":

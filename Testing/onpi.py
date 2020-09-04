@@ -7,5 +7,5 @@ remote = Messages(clientname = 'Get',broker = "10.49.12.253", topic = "test/mess
 remote.start()
 while remote.received!='Please end':
     print(remote.received)
-    time.sleep(3)
+    time.sleep(4)
 remote.end()
