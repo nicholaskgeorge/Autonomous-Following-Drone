@@ -1,9 +1,11 @@
 import serial
 from time import sleep
 import struct
+import threading
 
 class FlightControllerCommands(threading.Thread):
-    def __init__(port = '/dev/ttyS0', throttle=885, pitch=1500, yaw=1500, roll=1500):
+    def __init__(self, port = '/dev/ttyS0', throttle=885, pitch=1500, yaw=1500, roll=1500):
+        super().__init__()
         self.port = port
         self.throttle = throttle
         self.pitch = pitch
@@ -59,13 +61,14 @@ class FlightControllerCommands(threading.Thread):
         # print(channels)
         # print(len(message))
         # print(max(message))
-        if connected:
+        if self.connected:
             self.send(message, self.connected)
         else:
             self.send(message, self.connecttoport('/dev/ttyS0'))
     def run(self):
+        self.constantmessage = True
         print('Begining communications with flight controller')
-        while constantmessage:
-            commands([1500,1500,1500,885])
+        while self.constantmessage:
+            self.commands([self.roll,self.pitch,self.throttle,self.yaw])
             sleep(0.007)
         print('Ending communication')
