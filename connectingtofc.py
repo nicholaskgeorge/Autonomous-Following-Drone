@@ -49,12 +49,12 @@ def commands(channels):
     """This function will take any amount of channels given and both pack and send
     the message to the flight controller. Values given must still be given in the
     order of the channels"""
-    global connected
     command = []
     for i in channels:
         command.append(i)
-    command+=([0x05dc]*(14-len(channels)))
+    command+=([1000]*(14-len(channels)))
     message = pack(command)
+    print(message)
     # with connecttoport('/dev/ttyS0') as port:
     #     print (channels)
     #     send(message, port)
@@ -62,22 +62,27 @@ def commands(channels):
     # print(len(message))
     # print(max(message))
     if connected:
+        print('first happened')
         send(message, connected)
     else:
+        print('other option')
         send(message, connecttoport('/dev/ttyS0'))
 
 def test():
-    commands([1000]*4)
-    print("start")
-    port = serial.Serial('/dev/ttyS0',115200, timeout=10, write_timeout=10 )
-    port.write(struct.pack(b'B',128))
-    print("end")
-    port=connecttoport('/dev/ttyS0')
-    channel = [1000]*14
-    message = pack(channel)
-    for i in range(2000):
-        send(message, port)
-    #disarmed
+    for i in range(4000):
+        commands([1000]*4)
+        sleep(0.007)
+    # print("start")
+    # port = serial.Serial('/dev/ttyS0',115200, timeout=10, write_timeout=10 )
+    # port.write(struct.pack(b'B',128))
+    # print("end")
+    # port=connecttoport('/dev/ttyS0')
+    # channel = [1000]*14
+    # message = pack(channel)
+    # print(message)
+    # for i in range(2000):
+    #     send(message, port)
+    # #disarmed
     # for i in range(100):
     #     commands([1500, 1500, 1500, 885, 1500, 1500])
     #     sleep(1)
