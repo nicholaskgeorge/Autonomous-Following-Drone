@@ -23,7 +23,6 @@ class Messages(threading.Thread):
         print("Subscription complete")
     def on_message(self,client,userdata,msg):
         self.received = str(msg.payload.decode())
-        print(self.received)
     def on_disconnect(self,client,userdata,flags,rc=0):
         print('The connection has been closed')
     def end(self):

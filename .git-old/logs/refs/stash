@@ -1,0 +1,9 @@
+0000000000000000000000000000000000000000 3883919be76200325f0467109c2827e2e5e209a7 nicholaskgeorge <nkg37@cornell.edu> 1598835387 -0400	WIP on master: fa7f182 pi changes
+3883919be76200325f0467109c2827e2e5e209a7 debb0ab457f6d74c66fa098d44518d6501b7d287 nicholaskgeorge <nkg37@cornell.edu> 1598844240 -0400	WIP on master: 925730b Trying to fix recive function
+debb0ab457f6d74c66fa098d44518d6501b7d287 7bf738cb9698aecb1a86190ae1e9d6ebdb48bd80 nicholaskgeorge <nkg37@cornell.edu> 1598844834 -0400	WIP on master: 3d208ed Trying to fix recive function
+7bf738cb9698aecb1a86190ae1e9d6ebdb48bd80 3b97d1b7ac66e3e18ea2d925e156b181d40e1236 nicholaskgeorge <nkg37@cornell.edu> 1598845353 -0400	WIP on master: cd29bcd Trying to fix recive function
+3b97d1b7ac66e3e18ea2d925e156b181d40e1236 51d02d241dec9324f6ec789e22b28d834e837d5c nicholaskgeorge <nkg37@cornell.edu> 1598878926 -0400	WIP on master: 2f3d972 Testing case where reciving function has loop set to run forever
+51d02d241dec9324f6ec789e22b28d834e837d5c eb14077e1f6f69f760c0e39eb4f9ade35a611d40 nicholaskgeorge <nkg37@cornell.edu> 1598962886 -0400	WIP on master: 1234999 Another test
+eb14077e1f6f69f760c0e39eb4f9ade35a611d40 0ec939aa26221280d088a8b54805ba05764c1fc2 nicholaskgeorge <nkg37@cornell.edu> 1599014630 -0400	WIP on master: 1f00a0b Adding changes to message function which will make the reciving work
+0ec939aa26221280d088a8b54805ba05764c1fc2 6b618a20211335c8116d71617b0ab19181d3832a nicholaskgeorge <nkg37@cornell.edu> 1599015668 -0400	WIP on master: 6f086ca Trying to fix messages function
+6b618a20211335c8116d71617b0ab19181d3832a 9af4dc71ebd3ef1be7e6c07cc430472caf3d1364 nicholaskgeorge <nkg37@cornell.edu> 1599503488 -0400	WIP on master: 2f301f7 fixed some bugs in messaging.py

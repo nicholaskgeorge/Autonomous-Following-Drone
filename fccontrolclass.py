@@ -65,10 +65,20 @@ class FlightControllerCommands(threading.Thread):
             self.send(message, self.connected)
         else:
             self.send(message, self.connecttoport('/dev/ttyS0'))
+    def disarm(self):
+        print("Disarming Drone")
+        for i in range(600):
+            sleep(0.007)
+            self.commands([1500, 1500, 885,1500, 1500])
+    def arm(self):
+        print("Arming Drone")
+        for i in range(600):
+            sleep(0.007)
+            self.commands([1500, 1500, 1000, 1500, 1200])
     def run(self):
         self.constantmessage = True
         print('Begining communications with flight controller')
         while self.constantmessage:
-            self.commands([self.roll,self.pitch,self.throttle,self.yaw])
+            self.commands([self.roll,self.pitch,self.throttle,self.yaw,1200])
             sleep(0.007)
         print('Ending communication')
