@@ -4,6 +4,11 @@ import struct
 import threading
 
 class FlightControllerCommands(threading.Thread):
+    """
+    This is a class which allows for the communication between the pi and any flight
+    controller which supports serial communication in the ibus format. When the thread
+    is started it will send serial messages to the flight controller 142 times per second
+    """
     def __init__(self, port = '/dev/ttyS0', throttle=885, pitch=1500, yaw=1500, roll=1500):
         super().__init__()
         self.port = port
