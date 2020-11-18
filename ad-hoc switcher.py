@@ -1,2 +1,4 @@
-f = open(r"C:\Users\Nico\Autonomous-Following-Drone\testingread.txt","r")
-print(f.read())
+# f = open(r"C:\Users\Nico\Autonomous-Following-Drone\testingread.txt","r")
+# print(f.read())
+
+print("hello\n  hey")
