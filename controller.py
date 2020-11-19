@@ -16,6 +16,7 @@ drone.start()
 
 while True:
     news = message.received
+    print(news)
     if news == 'up' and drone.throttle <2000:
         drone.throttle +=5
     if news == 'down'and drone.throttle>1000:
