@@ -5,7 +5,7 @@ class Messages(threading.Thread):
     """This is the class holdign the functions which manage communication with the
        drone using the MQTT protocol. This will work over any network that both
        the drone and the computer are on together."""
-    def __init__(self,clientname,broker="10.49.12.253",topic = "test/message"):
+    def __init__(self,clientname,broker="localhost",topic = "test/message"):
         super().__init__()
         self.broker = broker
         self.topic = topic

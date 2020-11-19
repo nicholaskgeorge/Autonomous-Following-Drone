@@ -1,16 +1,15 @@
 from messaging import Messages
 from time import sleep
 import keyboard
-message = Messages('Laptop',topic="test/message")
+message = Messages('Laptop',topic="test/message", broker ="10.49.17.183")
 message.start()
 while True:
     sleep(0.08)
     try:  # used try so that if user pressed other than the given key error will not be shown
-        if keyboard.is_pressed('w'):  # if key 'q' is pressed
+        if keyboard.is_pressed('u'):  # if key 'q' is pressed
             message.send('up')
-        elif keyboard.is_pressed('s'):
+        elif keyboard.is_pressed('i'):
             message.send('down')
-        """
         elif keyboard.is_pressed('w'):
             message.send('forward')
         elif keyboard.is_pressed('s'):
@@ -26,14 +25,10 @@ while True:
         elif keyboard.is_pressed('`'):
             message.send('land')
         """
-        """
         This is constantly sent when no buttons are pressed. It is a way for The
         drone to know that we still have communication with the computer. If the
         drone does not recive a message of some kind within a certian time period
         it will automatially descend and land.
         """
-        else:
-            message.send('p')
-            delay(0.5)
     except:
         pass
