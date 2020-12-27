@@ -1,7 +1,7 @@
 from messaging import Messages
 from time import sleep
 import keyboard
-message = Messages('Laptop',topic="test/message", broker ="10.49.17.183")
+message = Messages('Laptop',topic="test/message", broker ="192.168.1.123")
 message.start()
 while True:
     sleep(0.08)
@@ -13,7 +13,7 @@ while True:
         elif keyboard.is_pressed('w'):
             message.send('forward')
         elif keyboard.is_pressed('s'):
-            message.send('back')
+            message.send('backward')
         elif keyboard.is_pressed('a'):
             message.send('left')
         elif keyboard.is_pressed('d'):
@@ -24,12 +24,12 @@ while True:
             message.send('yawright')
         elif keyboard.is_pressed('`'):
             message.send('land')
-        """"
-        This is constantly sent when no buttons are pressed. It is a way for The
-        drone to know that we still have communication with the computer. If the
-        drone does not recive a message of some kind within a certian time period
-        it will automatially descend and land.
-        """"
+
+        # This is constantly sent when no buttons are pressed. It is a way for The
+        # drone to know that we still have communication with the computer. If the
+        # drone does not recive a message of some kind within a certian time period
+        # it will automatially descend and land.
+
         else:
             message.send('stable')
     except:
