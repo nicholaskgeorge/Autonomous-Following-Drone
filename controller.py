@@ -13,12 +13,25 @@ drone = fc(throttle = 1000, yaw = 1500, roll = 1500)
 drone.disarm()
 drone.arm()
 drone.start()
-
+old = ''
 while True:
     news = message.received
-    print(news)
+    if news != old:
+        print (news)
+        old = news
     if news == 'up' and drone.throttle <2000:
         drone.throttle +=5
-    if news == 'down'and drone.throttle>1000:
+    elif news == 'down'and drone.throttle>1000:
         drone.throttle -=5
+    elif news == 'forward':
+        drone.pitch = 1520
+    elif news == 'backward':
+        drone.pitch = 1480
+    elif news == 'right':
+        drone.roll = 1520
+    elif news == 'left':
+        drone.roll = 1480
+    else:
+        drone.pitch = 1500
+        drone.roll = 1500
     sleep(0.03)
