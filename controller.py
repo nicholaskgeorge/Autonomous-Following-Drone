@@ -3,7 +3,7 @@ from fccontrolclass import FlightControllerCommands as fc
 from time import sleep
 
 """
-This is a small file that I am using to test the drone and controll it.
+This is a small file that I am using to test the drone and control it.
 For now I can only throttle up and down. In the future I will likley use something
 like ROS the handle this logic
 """
