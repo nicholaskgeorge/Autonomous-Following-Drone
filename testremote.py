@@ -1,11 +1,15 @@
 from messaging import Messages
 from time import sleep
 import keyboard
-message = Messages('Laptop',topic="test/message", broker ="192.168.1.123")
+message = Messages('Laptop',topic="test/message", broker ="192.168.4.1")
 message.start()
 while True:
     sleep(0.08)
     try:  # used try so that if user pressed other than the given key error will not be shown
+        if keyboard.is_pressed('p'):  # if key 'q' is pressed
+            message.send('disarm')
+        if keyboard.is_pressed('o'):  # if key 'q' is pressed
+            message.send('arm')
         if keyboard.is_pressed('u'):  # if key 'q' is pressed
             message.send('up')
         elif keyboard.is_pressed('i'):

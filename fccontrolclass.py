@@ -18,6 +18,7 @@ class FlightControllerCommands(threading.Thread):
         self.roll = roll
         self.connected = False
         self.constantmessage = False
+        self.mode = "disarmed"
     def connecttoport(self,dport):
         """This function connect to the desired port"""
         port= serial.Serial(dport,115200, timeout=10, write_timeout=10)
@@ -72,11 +73,13 @@ class FlightControllerCommands(threading.Thread):
             self.send(message, self.connecttoport('/dev/ttyS0'))
     def disarm(self):
         print("Disarming Drone")
+        self.mode = "disarmed"
         for i in range(600):
             sleep(0.007)
             self.commands([1500, 1500, 885,1500, 1500])
     def arm(self):
         print("Arming Drone")
+        self.mode = "armed"
         for i in range(600):
             sleep(0.007)
             self.commands([1500, 1500, 1000, 1500, 1200])
