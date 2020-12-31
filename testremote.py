@@ -1,7 +1,7 @@
 from messaging import Messages
 from time import sleep
 import keyboard
-message = Messages('Laptop',topic="test/message", broker ="192.168.4.1")
+message = Messages('Laptop',topic="test/message", broker ="192.168.1.11")
 message.start()
 while True:
     sleep(0.08)

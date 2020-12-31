@@ -16,6 +16,7 @@ class Messages(threading.Thread):
         self.client.on_message = self.on_message
         self.client.on_subscibe = self.on_subscribe
         self.received = ''
+        self.timerecived = ''
     def on_connect(self,client,userdata,flags,rc):
         """Sets up connection to the broker to send or recive messages. In the
         case of the drone the Pi is the broker"""
@@ -29,6 +30,7 @@ class Messages(threading.Thread):
         print("Subscription complete")
     def on_message(self,client,userdata,msg):
         """Saves any received message"""
+        self.timerecived = time.perf_counter()
         self.received = str(msg.payload.decode())
     def on_disconnect(self,client,userdata,flags,rc=0):
         """Ends conection with broker"""

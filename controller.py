@@ -19,6 +19,7 @@ while True:
     if news != old:
         print (news)
         old = news
+    print (time.perf_counter()-message.timerecived)
     if news == 'up' and drone.throttle <2000:
         drone.throttle +=5
     elif news == 'down'and drone.throttle>1000:
