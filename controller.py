@@ -15,16 +15,18 @@ drone.disarm()
 drone.arm()
 drone.start()
 old = ''
-while True:
+running = True
+while running:
     sincelastmessage = perf_counter()-message.timerecived
-    if sincelastmessage>2:
+    if sincelastmessage>1.2:
+        print("Remote connection lost begining landing sequence")
         drone.mode = "land"
     news = message.received
     if news != old:
         print (news)
         old = news
-    if drone.mode = "armed":
-        if news == 'up' and drone.throttle <2000:
+    if drone.mode == "armed":
+        if news == 'up' and drone.throttle <1600:
             drone.throttle +=5
         elif news == 'down'and drone.throttle>1000:
             drone.throttle -=5
@@ -39,12 +41,16 @@ while True:
         else:
             drone.pitch = 1500
             drone.roll = 1500
-    elif drone.mode = "land":
+    elif drone.mode == "land":
+        print("Landing drone")
         while drone.throttle>1000:
             drone.pitch = 1500
             drone.roll = 1500
             drone.throttle -= 5
-            sleep(0.005)
+            sleep(0.05)
         drone.constantmessage = False
+        running = False
+    else:
+        pass
 
     sleep(0.03)
