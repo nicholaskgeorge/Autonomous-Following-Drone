@@ -37,7 +37,9 @@ while running:
         elif news == 'right':
             drone.roll = 1610
         elif news == 'left':
-            drone.roll = 1390
+            drone.roll = 1480
+        elif news == 'stop':
+            drone.mode = 'stop'
         else:
             drone.pitch = 1500
             drone.roll = 1500
@@ -50,7 +52,10 @@ while running:
             sleep(0.05)
         drone.constantmessage = False
         running = False
+    elif drone.mode == 'stop':
+        print("Stoping Motors"):
+        drone.constantmessage = False
+        running = False
     else:
         pass
-
     sleep(0.03)

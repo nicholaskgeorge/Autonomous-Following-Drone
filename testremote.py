@@ -28,6 +28,8 @@ while True:
             message.send('yawright')
         elif keyboard.is_pressed('`'):
             message.send('land')
+        elif keyboard.is_pressed('0'):
+            message.send('stop')
 
         # This is constantly sent when no buttons are pressed. It is a way for The
         # drone to know that we still have communication with the computer. If the
