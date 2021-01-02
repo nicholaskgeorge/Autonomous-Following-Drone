@@ -31,13 +31,13 @@ while running:
         elif news == 'down'and drone.throttle>1000:
             drone.throttle -=5
         elif news == 'forward':
-            drone.pitch = 1520
+            drone.pitch = 1610
         elif news == 'backward':
-            drone.pitch = 1480
+            drone.pitch = 1390
         elif news == 'right':
-            drone.roll = 1520
+            drone.roll = 1610
         elif news == 'left':
-            drone.roll = 1480
+            drone.roll = 1390
         else:
             drone.pitch = 1500
             drone.roll = 1500
