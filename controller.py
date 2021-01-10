@@ -53,7 +53,7 @@ while running:
         drone.constantmessage = False
         running = False
     elif drone.mode == 'stop':
-        print("Stoping Motors"):
+        print("Stoping Motors")
         drone.constantmessage = False
         running = False
     else:
