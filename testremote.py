@@ -3,7 +3,8 @@ from time import sleep
 import keyboard
 message = Messages('Laptop',topic="test/message", broker ="192.168.4.1")
 message.start()
-while True:
+send = True
+while send:
     sleep(0.08)
     try:  # used try so that if user pressed other than the given key error will not be shown
         if keyboard.is_pressed('p'):  # if key 'q' is pressed
@@ -38,6 +39,7 @@ while True:
             message.send('land')
         elif keyboard.is_pressed('0'):
             message.send('stop')
+            send = False
 
         # This is constantly sent when no buttons are pressed. It is a way for The
         # drone to know that we still have communication with the computer. If the
